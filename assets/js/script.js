@@ -120,17 +120,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Search functionality - only search after pressing Enter
+  // Search functionality - filter as the user types
   const searchInput = document.querySelector('input[type="search"]');
-  searchInput.addEventListener('keydown', (event) => {
-    if (event.key === 'Enter') {  // Check if Enter key was pressed
-      const searchTerm = searchInput.value.toLowerCase();
-      const filteredCountries = allCountries.filter(country =>
-        country.name.toLowerCase().includes(searchTerm)
-      );
-      displayCountries(filteredCountries);
-    }
+  searchInput.addEventListener('input', () => {  // 'input' event fires on every keystroke
+    const searchTerm = searchInput.value.toLowerCase();
+    const filteredCountries = allCountries.filter(country =>
+      country.name.toLowerCase().includes(searchTerm)
+    );
+    displayCountries(filteredCountries);
   });
+
 
   // Filter by region functionality
 const regionButtons = document.querySelectorAll('.region-filter-dropdown ul button');
