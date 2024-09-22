@@ -4,9 +4,57 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Flags Shaz</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="assets/styles/css/styles.css">
+	<script src="https://kit.fontawesome.com/65f3e9c4b1.js" crossorigin="anonymous"></script>
+	
 </head>
 <body>
-	<h1>hi there</h1>
+	<header class="header">
+		<div class="container">
+			<div class="d-flex d-flex--justified">
+				<h1>Where in the world?</h1>
+				<button>
+					<i class="fa fa-thin fa-moon"></i>
+					Dark Mode
+				</button>
+			</div>
+		</div>
+	</header>
+	<main>
+		<div class="container">
+			<section class="top-user-area | d-flex d-flex--justified">
+				<input type="search" placeholder="Search for a country">
+				<div class="region-filter-dropdown">
+					<button id="toggle-button">Filter by Region <i class="fa fa-angle-down" aria-hidden="true"></i></button>
+					<ul id="regionsList">
+						<li>
+							<button>Africa</button>
+						</li>
+						<li>
+							<button>Americas</button>
+						</li>
+						<li>
+							<button>Asia</button>
+						</li>
+						<li>
+							<button>Europe</button>
+						</li>
+						<li>
+							<button>Oceania</button>
+						</li>
+					</ul>
+				</div>
+			</section>
+			<section class="grid-wrap" id="grid-wrap">
+				<div class="grid" id="country-grid">
+				</div>
+			</section>
+		</div>
+	</main>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script type="text/javascript" src="assets/js/script.js"></script>
 </body>
 </html>
