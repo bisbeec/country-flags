@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <div><strong>Region:</strong> ${country.region}</div>
           <div><strong>Capital:</strong> ${country.capital}</div>
         </div>
+        <button></button>
       `;
 
       // Append the card to the grid
@@ -76,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
       : '<span class="border-country">No bordering countries</span>';  // Show this message if no borders
 
     countryDetail.innerHTML = `
-      <div class="container">
+
         <button class="back-button">Back</button>
 
         <div class="country-detail-inner">
@@ -86,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
           
           <div class="country-info">
           <h2>${country.name}</h2>
-            <div class="d-flex d-flex--justified">
+            <div class="d-flex">
               <div class="col">
                 <div><strong>Native Name:</strong> ${country.nativeName}</div>
                 <div><strong>Population:</strong> ${country.population.toLocaleString()}</div>
@@ -105,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
           </div>
         </div>
-      </div>
+
     `;
 
     countryGrid.appendChild(countryDetail);
@@ -160,8 +161,23 @@ regionButtons.forEach(button => {
     }
   }
 
+  // Dark mode toggle
+  const modeToggleButton = document.getElementById('mode-toggle-button');
+  modeToggleButton.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+
+    // Toggle the button text without affecting the icon
+    if (modeToggleButton.textContent.includes('Dark Mode')) {
+      modeToggleButton.innerHTML = '<i class="fa fa-thin fa-moon"></i> Light Mode';
+    } else {
+      modeToggleButton.innerHTML = '<i class="fa fa-thin fa-moon"></i> Dark Mode';
+    }
+  });
+
+
+
   // Region dropdown functionality
-  document.querySelector("#toggle-button").addEventListener('click', () => {
+  document.querySelector("#region-toggle-button").addEventListener('click', () => {
     document.querySelector("#regionsList").classList.toggle("list-show");
   });
 

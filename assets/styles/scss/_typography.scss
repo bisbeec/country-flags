@@ -6,4 +6,10 @@ body {
   	font-variation-settings:"wdth" 100,"YTLC" 500;
 
   	font-size: 14px;
+  	h1 {
+  		font-size: 1.75rem;
+  		@media screen and (max-width: $breakMobile) {
+  			font-size: 1.15rem;
+  		}
+  	}
 }

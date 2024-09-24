@@ -1,16 +1,20 @@
 @import 'reset';
-@import 'typography';
 @import 'variables';
+@import 'typography';
 @import 'mixins';
 @import 'utilities';
 
 body {
-	background: #fafafa;
+	background: $offWhite;
 	ol, ul {
 		list-style: none;
 	}
 	button {
 		cursor: pointer;
+		outline: none;
+		&:focus-visible {
+			outline: 1px solid blue;
+		}
 	}
 	* {
 		color: $textColor;
@@ -18,12 +22,11 @@ body {
 }
 
 .header {
-	background: #fff;
 	padding-block: 1.5em;
-	box-shadow: $boxShadow;
+	background-color: #fff;
 	button {
 		i {
-			font-weight: 100;
+			font-weight: 900;
 			color: #555;
 			margin-right: 5px;
 		}
@@ -32,29 +35,48 @@ body {
 
 .top-user-area {
 	margin-block: 3em;
-	input, .region-filter-dropdown {
-		height: 50px;
-		box-shadow: $boxShadow;
-		background: #fff;
-		border-radius: $rounded;
+	gap: 2em;
+	@media screen and (max-width: $breakMobile) {
+		flex-direction: column;
 	}
-	input {
+	.search-wrap, .region-filter-dropdown {
+		height: 50px;
+	}
+	.search-wrap {
 		width: 480px;
-		padding-inline: 50px 10px;
-		background-image: url('../../img/search-icon.webp');
-		background-repeat: no-repeat;
-		background-size: 15px;
-		background-position: 15px center;
+		position: relative;
+		overflow: hidden;
+		border-radius: $rounded;
+		background: #fff;
+		@media screen and (max-width: $breakMobile) {
+			width: 100%;
+		}
+		.fa-search {
+			color: #999;
+			position: absolute;
+			left: 15px;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+		input {
+			height: 100%;
+			width: 90%;
+			right: 0;
+			position: absolute;
+			outline: none;
+		}
 	}
 	.region-filter-dropdown {
 		display: flex;
 		position: relative;
 		width: 200px;
-		padding: 0 5px 0 10px;
 		z-index: 1;
-		#toggle-button {
+		border-radius: $rounded;
+		background-color: #fff;
+		#region-toggle-button {
 			width: 100%;
 			text-align: left;
+			padding: 0 5px 0 15px;
 		}
 		.fa-angle-down {
 			position: absolute;
@@ -65,10 +87,10 @@ body {
 			position: absolute;
 			width: 100%;
 			top: 55px; left: 0;
-			background: inherit;
+			background-color: inherit;
 			padding: 0;
 			box-shadow: inherit;
-			border-radius: inherit;
+			border-radius: $rounded;
 			max-height: 0;
 			overflow-y: hidden;
 			transition: .3s max-height ease-in-out;
@@ -78,11 +100,12 @@ body {
 					display: block;
 					width: 100%;
 					text-align: left;
-					background: #fff;
+					background-color: inherit;
 					transition: .3s background, color ease-in-out;
-					&:hover, &:focus {
+					&:hover, &:focus-visible {
 						background: steelblue;
 						color: #fff;
+						outline: none;
 					}
 				}
 			}
@@ -93,17 +116,28 @@ body {
 	}
 }
 
+
+.grid-wrap {
+	padding-bottom: 3em;
+}
 .grid {
 	display: grid;
 	grid-template-columns: auto auto auto auto;
 	gap: 70px;
-
 	position: relative;
+	@media screen and (max-width: $breakMid) {
+		grid-template-columns: auto auto auto;
+		gap: 2em;
+	}
+	@media screen and (max-width: $breakMobile) {
+		grid-template-columns: auto;
+		gap: 2em;
+	}
 	.country-card {
-		background: #fff;;
-		box-shadow: $boxShadow;
-		cursor: pointer;
+		background-color: #fff;
 		border-radius: $rounded;
+		position: relative;
+		box-shadow: $boxShadow;
 		.flag-wrap {
 			border-radius: $rounded $rounded 0 0;
 			overflow: hidden;
@@ -119,30 +153,52 @@ body {
 				margin-bottom: 1em;
 			}	
 		}
+		button {
+			position: absolute;
+			inset: 0;
+			height: 100%;
+			width: 100%;
+		}
 	}
 
 	.country-detail {
-		position: fixed;
+		//needs to be absolute to remove it from parent grid layout
+		position: absolute;
 		width: 100%;
-		height: 100%;
 		left: 0;
-		top: 86px;
-		background: #fff;
+		top: 0;
 		.country-detail-inner {
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
 			margin-top: 5em;
+			@media screen and (max-width: $breakMid) {
+				display: block;
+				margin-bottom: 5em;
+			}
 		}
 		.flag-wrap, .country-info {
 			width: 45%;
+			@media screen and (max-width: $breakMid) {
+				width: 100%;
+				margin-block: 2em;
+			}
 		}
+
 		.flag-wrap img {
 			box-shadow: $boxShadow;
 		}
 		.country-info {
 			>.d-flex {
-				gap: 1em;
+				gap: 6em;
+				justify-content: space-between;
+				@media screen and (max-width: $breakMid) {
+					justify-content: initial;
+				}
+				@media screen and (max-width: $breakMobile) {
+					flex-direction: column;
+					gap: 2em;
+				}
 				.col {
 					>div {
 						margin-block: .5em;
@@ -161,9 +217,20 @@ body {
 				margin-top: 3em;
 				span {
 					display: block;
-					border: 1px solid #999;
-					padding: 5px;
+					box-shadow: $boxShadow;
+					padding: 5px 15px;
 					border-radius: $rounded;
+					background: #fff;
+				}
+				@media screen and (max-width: $breakMobile) {
+					display: block;
+					strong {
+						display: block;
+					}
+					span {
+						display: inline-block;
+						margin: .75em .75em 0 0;
+					}
 				}
 			}
 		}
@@ -175,8 +242,8 @@ body {
 		  	width: 135px;
 		  	padding: 10px;
 		  	margin-top: 5em;
-		  	background: #fff;
-		  	box-shadow: 0 0 4px #555;
+		  	background-color: #fff;
+		  	box-shadow: $boxShadow;
 		  	border-radius: $rounded;
 		  	position: relative;
 		  	line-height: 0;
@@ -190,5 +257,27 @@ body {
 		}
 	}
 }
+
+
+
+///// dark mode 
+
+.body.dark-mode, .body.dark-mode .grid .country-detail {
+	background: $dark100;
+	* {
+		color: #fff;
+	}
+	.header, .top-user-area .search-wrap, .top-user-area .region-filter-dropdown, .grid .country-card, .back-button, .grid .country-detail .country-info .border-countries span {
+		background: $dark200;
+	}
+	.top-user-area .region-filter-dropdown li button:hover, .top-user-area .region-filter-dropdown li button:focus-visible {
+		background: #fff;
+		color: $textColor;
+	}
+	.grid .country-card, .grid .country-detail .flag-wrap img, .back-button, .grid .country-detail .country-info .border-countries span {
+		box-shadow: $boxShadowDark;
+	}
+}
+
 
 

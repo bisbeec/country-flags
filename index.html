@@ -11,12 +11,12 @@
 	<script src="https://kit.fontawesome.com/65f3e9c4b1.js" crossorigin="anonymous"></script>
 	
 </head>
-<body>
-	<header class="header">
+<body class="body">
+	<header class="header | box-shadow">
 		<div class="container">
 			<div class="d-flex d-flex--justified">
 				<h1>Where in the world?</h1>
-				<button>
+				<button id="mode-toggle-button">
 					<i class="fa fa-thin fa-moon"></i>
 					Dark Mode
 				</button>
@@ -26,9 +26,12 @@
 	<main>
 		<div class="container">
 			<section class="top-user-area | d-flex d-flex--justified">
-				<input type="search" placeholder="Search for a country">
-				<div class="region-filter-dropdown">
-					<button id="toggle-button">Filter by Region <i class="fa fa-angle-down" aria-hidden="true"></i></button>
+				<div class="search-wrap | box-shadow">
+					<i class="fa fa-thin fa-search"></i>
+					<input type="search" placeholder="Search for a country">
+				</div>
+				<div class="region-filter-dropdown | box-shadow">
+					<button id="region-toggle-button">Filter by Region <i class="fa fa-angle-down" aria-hidden="true"></i></button>
 					<ul id="regionsList">
 						<li>
 							<button>Africa</button>
@@ -54,7 +57,6 @@
 			</section>
 		</div>
 	</main>
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script type="text/javascript" src="assets/js/script.js"></script>
 </body>
 </html>
