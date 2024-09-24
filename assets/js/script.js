@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <div><strong>Region:</strong> ${country.region}</div>
           <div><strong>Capital:</strong> ${country.capital}</div>
         </div>
-        <button></button>
+        <button class="button-wrap" title="Country"></button>
       `;
 
       // Append the card to the grid
