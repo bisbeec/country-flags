@@ -215,8 +215,10 @@ body {
 				flex-wrap: wrap;
 				gap: .5em;
 				margin-top: 3em;
-				span {
-					display: block;
+				strong {
+					margin-right: 1em;
+				}
+				button.border-country {
 					box-shadow: $boxShadow;
 					padding: 5px 15px;
 					border-radius: $rounded;
@@ -227,7 +229,7 @@ body {
 					strong {
 						display: block;
 					}
-					span {
+					button.border-country {
 						display: inline-block;
 						margin: .75em .75em 0 0;
 					}
@@ -267,14 +269,14 @@ body {
 	* {
 		color: #fff;
 	}
-	.header, .top-user-area .search-wrap, .top-user-area .region-filter-dropdown, .grid .country-card, .back-button, .grid .country-detail .country-info .border-countries span {
+	.header, .top-user-area .search-wrap, .top-user-area .region-filter-dropdown, .grid .country-card, .back-button, .grid .country-detail .country-info .border-countries button.border-country {
 		background: $dark200;
 	}
 	.top-user-area .region-filter-dropdown li button:hover, .top-user-area .region-filter-dropdown li button:focus-visible {
 		background: #fff;
 		color: $textColor;
 	}
-	.grid .country-card, .grid .country-detail .flag-wrap img, .back-button, .grid .country-detail .country-info .border-countries span {
+	.grid .country-card, .grid .country-detail .flag-wrap img, .back-button, .grid .country-detail .country-info .border-countries button.border-country {
 		box-shadow: $boxShadowDark;
 	}
 }

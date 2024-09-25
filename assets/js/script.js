@@ -51,75 +51,88 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Function to show country details
   function showCountryDetails(country) {
-    const countryGrid = document.getElementById('country-grid');
-    const topUserArea = document.querySelector('.top-user-area'); // Get the search/filter area
+  const countryGrid = document.getElementById('country-grid');
+  const topUserArea = document.querySelector('.top-user-area'); // Get the search/filter area
 
-    // Hide the top-user-area section
-    topUserArea.style.display = 'none';
+  // Hide the top-user-area section
+  topUserArea.style.display = 'none';
 
-    countryGrid.innerHTML = ''; // Clear grid
+  countryGrid.innerHTML = ''; // Clear grid
 
-    // Handle cases where there are no bordering countries
-    const borderCountries = country.borders && country.borders.length > 0 
-      ? country.borders.map(borderCode => {
-          const borderCountry = allCountries.find(c => c.alpha3Code === borderCode);
-          return borderCountry ? borderCountry.name : borderCode;  // Return the full name or the code if not found
-        })
-      : [];  // If no borders, return an empty array
+  // Handle cases where there are no bordering countries
+  const borderCountries = country.borders && country.borders.length > 0 
+    ? country.borders.map(borderCode => {
+        const borderCountry = allCountries.find(c => c.alpha3Code === borderCode);
+        return borderCountry;  // Return the full border country object
+      }).filter(Boolean) // Remove null values (i.e., if borderCountry is not found)
+    : [];  // If no borders, return an empty array
 
-    // Create a detailed view for the selected country
-    const countryDetail = document.createElement('div');
-    countryDetail.classList.add('country-detail');
+  // Create a detailed view for the selected country
+  const countryDetail = document.createElement('div');
+  countryDetail.classList.add('country-detail');
 
-    // Generate span elements for each bordering country or show a message if there are none
-    const borderSpans = borderCountries.length 
-      ? borderCountries.map(borderName => `<span class="border-country">${borderName}</span>`).join('')
-      : '<span class="border-country">No bordering countries</span>';  // Show this message if no borders
+  // Generate clickable buttons for each bordering country
+  const borderButtons = borderCountries.length > 0 
+    ? borderCountries.map(borderCountry => 
+        `<button class="border-country" data-code="${borderCountry.alpha3Code}">${borderCountry.name}</button>`
+      ).join('')
+    : 'No bordering countries';
 
-    countryDetail.innerHTML = `
+  countryDetail.innerHTML = `
+    <button class="back-button">Back</button>
 
-        <button class="back-button">Back</button>
-
-        <div class="country-detail-inner">
-          <div class="flag-wrap">
-              <img src="${country.flag}" alt="Flag of ${country.name}">
+    <div class="country-detail-inner">
+      <div class="flag-wrap">
+          <img src="${country.flag}" alt="Flag of ${country.name}">
+      </div>
+      
+      <div class="country-info">
+      <h2>${country.name}</h2>
+        <div class="d-flex">
+          <div class="col">
+            <div><strong>Native Name:</strong> ${country.nativeName}</div>
+            <div><strong>Population:</strong> ${country.population.toLocaleString()}</div>
+            <div><strong>Region:</strong> ${country.region}</div>
+            <div><strong>Sub Region:</strong> ${country.subregion}</div>
+            <div><strong>Capital:</strong> ${country.capital}</div>
           </div>
-          
-          <div class="country-info">
-          <h2>${country.name}</h2>
-            <div class="d-flex">
-              <div class="col">
-                <div><strong>Native Name:</strong> ${country.nativeName}</div>
-                <div><strong>Population:</strong> ${country.population.toLocaleString()}</div>
-                <div><strong>Region:</strong> ${country.region}</div>
-                <div><strong>Sub Region:</strong> ${country.subregion}</div>
-                <div><strong>Capital:</strong> ${country.capital}</div>
-              </div>
-              <div class="col">
-                <div><strong>Top Level Domain:</strong> ${country.topLevelDomain}</div>
-                <div><strong>Currencies:</strong> ${country.currencies.map(currency => currency.name).join(', ')}</div>
-                <div><strong>Languages:</strong> ${country.languages.map(lang => lang.name).join(', ')}</div>
-              </div>
-            </div>
-            <div class="border-countries">
-              <strong>Border Countries:</strong> ${borderSpans}
-            </div>
+          <div class="col">
+            <div><strong>Top Level Domain:</strong> ${country.topLevelDomain}</div>
+            <div><strong>Currencies:</strong> ${country.currencies.map(currency => currency.name).join(', ')}</div>
+            <div><strong>Languages:</strong> ${country.languages.map(lang => lang.name).join(', ')}</div>
           </div>
         </div>
+        <div class="border-countries">
+          <strong>Border Countries:</strong> ${borderButtons}
+        </div>
+      </div>
+    </div>
+  `;
 
-    `;
+  countryGrid.appendChild(countryDetail);
 
-    countryGrid.appendChild(countryDetail);
+  // Add back button functionality
+  const backButton = countryDetail.querySelector('.back-button');
+  backButton.addEventListener('click', () => {
+    displayCountries(allCountries); // Show all countries again
 
-    // Add back button functionality
-    const backButton = countryDetail.querySelector('.back-button');
-    backButton.addEventListener('click', () => {
-      displayCountries(allCountries); // Show all countries again
+    // Show the top-user-area section again
+    topUserArea.style.display = 'flex';
+  });
 
-      // Show the top-user-area section again
-      topUserArea.style.display = 'flex';
+  // Add click event listeners to border country buttons
+  const borderCountryButtons = countryDetail.querySelectorAll('.border-country');
+  borderCountryButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const alpha3Code = button.getAttribute('data-code');
+      const clickedCountry = allCountries.find(c => c.alpha3Code === alpha3Code);
+      if (clickedCountry) {
+        showCountryDetails(clickedCountry); // Show details for the clicked border country
+      }
     });
-  }
+  });
+}
+
 
   // Search functionality - filter as the user types
   const searchInput = document.querySelector('input[type="search"]');

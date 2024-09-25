@@ -351,8 +351,10 @@ body * {
   gap: 0.5em;
   margin-top: 3em;
 }
-.grid .country-detail .country-info .border-countries span {
-  display: block;
+.grid .country-detail .country-info .border-countries strong {
+  margin-right: 1em;
+}
+.grid .country-detail .country-info .border-countries button.border-country {
   -webkit-box-shadow: 0px 1px 4px #ccc;
           box-shadow: 0px 1px 4px #ccc;
   padding: 5px 15px;
@@ -366,7 +368,7 @@ body * {
   .grid .country-detail .country-info .border-countries strong {
     display: block;
   }
-  .grid .country-detail .country-info .border-countries span {
+  .grid .country-detail .country-info .border-countries button.border-country {
     display: inline-block;
     margin: 0.75em 0.75em 0 0;
   }
@@ -397,14 +399,14 @@ body * {
 .body.dark-mode *, .body.dark-mode .grid .country-detail * {
   color: #fff;
 }
-.body.dark-mode .header, .body.dark-mode .top-user-area .search-wrap, .body.dark-mode .top-user-area .region-filter-dropdown, .body.dark-mode .grid .country-card, .body.dark-mode .back-button, .body.dark-mode .grid .country-detail .country-info .border-countries span, .body.dark-mode .grid .country-detail .header, .body.dark-mode .grid .country-detail .top-user-area .search-wrap, .body.dark-mode .grid .country-detail .top-user-area .region-filter-dropdown, .body.dark-mode .grid .country-detail .grid .country-card, .body.dark-mode .grid .country-detail .back-button, .body.dark-mode .grid .country-detail .grid .country-detail .country-info .border-countries span {
+.body.dark-mode .header, .body.dark-mode .top-user-area .search-wrap, .body.dark-mode .top-user-area .region-filter-dropdown, .body.dark-mode .grid .country-card, .body.dark-mode .back-button, .body.dark-mode .grid .country-detail .country-info .border-countries button.border-country, .body.dark-mode .grid .country-detail .header, .body.dark-mode .grid .country-detail .top-user-area .search-wrap, .body.dark-mode .grid .country-detail .top-user-area .region-filter-dropdown, .body.dark-mode .grid .country-detail .grid .country-card, .body.dark-mode .grid .country-detail .back-button, .body.dark-mode .grid .country-detail .grid .country-detail .country-info .border-countries button.border-country {
   background: hsl(209, 23%, 22%);
 }
 .body.dark-mode .top-user-area .region-filter-dropdown li button:hover, .body.dark-mode .top-user-area .region-filter-dropdown li button:focus-visible, .body.dark-mode .grid .country-detail .top-user-area .region-filter-dropdown li button:hover, .body.dark-mode .grid .country-detail .top-user-area .region-filter-dropdown li button:focus-visible {
   background: #fff;
   color: hsl(200, 15%, 8%);
 }
-.body.dark-mode .grid .country-card, .body.dark-mode .grid .country-detail .flag-wrap img, .body.dark-mode .back-button, .body.dark-mode .grid .country-detail .country-info .border-countries span, .body.dark-mode .grid .country-detail .grid .country-card, .body.dark-mode .grid .country-detail .grid .country-detail .flag-wrap img, .body.dark-mode .grid .country-detail .back-button, .body.dark-mode .grid .country-detail .grid .country-detail .country-info .border-countries span {
+.body.dark-mode .grid .country-card, .body.dark-mode .grid .country-detail .flag-wrap img, .body.dark-mode .back-button, .body.dark-mode .grid .country-detail .country-info .border-countries button.border-country, .body.dark-mode .grid .country-detail .grid .country-card, .body.dark-mode .grid .country-detail .grid .country-detail .flag-wrap img, .body.dark-mode .grid .country-detail .back-button, .body.dark-mode .grid .country-detail .grid .country-detail .country-info .border-countries button.border-country {
   -webkit-box-shadow: 0px 1px 4px #333;
           box-shadow: 0px 1px 4px #333;
 }
