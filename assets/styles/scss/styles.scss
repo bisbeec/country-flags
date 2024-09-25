@@ -24,6 +24,10 @@ body {
 .header {
 	padding-block: 1.5em;
 	background-color: #fff;
+	a {
+		color: inherit;
+		text-decoration: none;
+	}
 	button {
 		i {
 			font-weight: 900;
