@@ -160,7 +160,7 @@ body * {
 .top-user-area .search-wrap .fa-search {
   color: #999;
   position: absolute;
-  left: 15px;
+  left: 25px;
   top: 50%;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
@@ -171,6 +171,7 @@ body * {
   right: 0;
   position: absolute;
   outline: none;
+  padding-left: 20px;
 }
 .top-user-area .region-filter-dropdown {
   display: -webkit-box;

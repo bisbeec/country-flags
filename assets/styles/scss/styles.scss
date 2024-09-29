@@ -58,7 +58,7 @@ body {
 		.fa-search {
 			color: #999;
 			position: absolute;
-			left: 15px;
+			left: 25px;
 			top: 50%;
 			transform: translateY(-50%);
 		}
@@ -68,6 +68,7 @@ body {
 			right: 0;
 			position: absolute;
 			outline: none;
+			padding-left: 20px;
 		}
 	}
 	.region-filter-dropdown {
