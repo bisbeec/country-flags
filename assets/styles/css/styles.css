@@ -259,9 +259,16 @@ body * {
           box-shadow: 0px 1px 4px #ccc;
   max-width: 265px;
 }
+@media screen and (max-width: 590px) {
+  .grid .country-card {
+    max-width: none;
+  }
+}
 .grid .country-card .flag-wrap {
   border-radius: 3px 3px 0 0;
   overflow: hidden;
+  -webkit-box-shadow: 0 1px 1px #eee;
+          box-shadow: 0 1px 1px #eee;
 }
 .grid .country-card .country-info {
   padding: 1em;

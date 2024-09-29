@@ -3,10 +3,24 @@ document.addEventListener('DOMContentLoaded', () => {
   let allCountries = [];
 
   // Fetch country data from data.json
-  fetch('data.json')
+  fetch('https://restcountries.com/v3.1/all')
     .then(response => response.json())
     .then(data => {
-      allCountries = data;  // Store all fetched countries
+      // Normalize the API data to fit your application
+      allCountries = data.map(country => ({
+        name: country.name.common,
+        nativeName: country.name.nativeName ? Object.values(country.name.nativeName)[0].common : country.name.common,
+        population: country.population,
+        region: country.region,
+        subregion: country.subregion,
+        capital: country.capital ? country.capital[0] : 'N/A',
+        flag: country.flags.png,
+        topLevelDomain: country.tld ? country.tld[0] : 'N/A',
+        currencies: country.currencies ? Object.values(country.currencies) : [],
+        languages: country.languages ? Object.values(country.languages) : [],
+        borders: country.borders || [],
+        alpha3Code: country.cca3, // Matches `alpha3Code` with `cca3` from API
+      }));
       displayCountries(allCountries);  // Display all countries initially
     })
     .catch(error => console.error('Error loading country data:', error));
