@@ -38,7 +38,7 @@ body {
 }
 
 .top-user-area {
-	margin-block: 3.175em 3.45em;
+	margin-block: 48px;
 	gap: 2em;
 	@media screen and (max-width: $breakMobile) {
 		flex-direction: column;
@@ -127,7 +127,7 @@ body {
 .grid {
 	display: grid;
 	grid-template-columns: auto auto auto auto;
-	gap: 70px;
+	gap: 75px;
 	position: relative;
 	@media screen and (max-width: $breakMid) {
 		grid-template-columns: auto auto auto;
@@ -150,6 +150,9 @@ body {
 			border-radius: $rounded $rounded 0 0;
 			overflow: hidden;
 			box-shadow: 0 1px 1px #eee;
+			img {
+				width: 100%;
+			}
 		}
 		.country-info {
 			padding: 1em;
@@ -196,6 +199,9 @@ body {
 
 		.flag-wrap img {
 			box-shadow: $boxShadow;
+			@media screen and (max-width: $breakMobile) {
+				width: 100%;
+			}
 		}
 		.country-info {
 			>.d-flex {
