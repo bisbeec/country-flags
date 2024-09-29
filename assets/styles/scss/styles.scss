@@ -22,7 +22,7 @@ body {
 }
 
 .header {
-	padding-block: 1.5em;
+	padding-block: 1.4em;
 	background-color: #fff;
 	a {
 		color: inherit;
@@ -38,13 +38,13 @@ body {
 }
 
 .top-user-area {
-	margin-block: 3em;
+	margin-block: 3em 3.5em;
 	gap: 2em;
 	@media screen and (max-width: $breakMobile) {
 		flex-direction: column;
 	}
 	.search-wrap, .region-filter-dropdown {
-		height: 50px;
+		height: 55px;
 	}
 	.search-wrap {
 		width: 480px;
@@ -142,6 +142,7 @@ body {
 		border-radius: $rounded;
 		position: relative;
 		box-shadow: $boxShadow;
+		max-width: 265px;
 		.flag-wrap {
 			border-radius: $rounded $rounded 0 0;
 			overflow: hidden;
