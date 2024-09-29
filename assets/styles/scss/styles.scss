@@ -288,6 +288,9 @@ body {
 	.grid .country-card, .grid .country-detail .flag-wrap img, .back-button, .grid .country-detail .country-info .border-countries button.border-country {
 		box-shadow: $boxShadowDark;
 	}
+	.grid .country-card .flag-wrap {
+		box-shadow: 0 1px 1px #555;
+	}
 }
 
 
