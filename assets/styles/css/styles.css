@@ -131,7 +131,7 @@ body * {
 }
 
 .top-user-area {
-  margin-block: 3em 3.5em;
+  margin-block: 3.175em 3.45em;
   gap: 2em;
 }
 @media screen and (max-width: 590px) {
